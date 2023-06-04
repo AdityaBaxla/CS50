@@ -106,6 +106,7 @@ c reads from top to bottom, so you need main() at the bottom. you can get away w
 before the main() function. It's just a way for compiler to understand what functions to expect.
 
 use do while loop to get the input that u want like
+
 ```
 do
 {
@@ -113,7 +114,8 @@ do
 }
 while(n<1)
 ```
-this will ensure you will get a positive number 
+
+this will ensure you will get a positive number
 
 One important thing to notice is computers are imprecise because of floating point noation.This can be huge bugs in scientific calculations aircrafts and ingeneral mssive.s
 
@@ -121,12 +123,12 @@ One important thing to notice is computers are imprecise because of floating poi
 
 The compilation of code consists of these steps:
 
-- preprocessing 
-    > it has prototype for the functions used in the code. It's like trust me bro it has the functions that i have used. it's in #include 
+- preprocessing
+    > it has prototype for the functions used in the code. It's like trust me bro it has the functions that i have used. it's in #include
 - compiling
     > it converts into assembly language
 - assembly
-    > the machine code is converted to 0/1's 
+    > the machine code is converted to 0/1's
 - linking
     > combines all the different programers 0/1's in one file called filename.exe ... a machine executable file
 
@@ -179,14 +181,14 @@ Array : contiguious set of memory.
 
 computers cannot have birds eye veow like us humans.it can only see sequentialy
 
-How fast or slow a code is, big O notation : it is the upper bond of time 
+How fast or slow a code is, big O notation : it is the upper bond of time
 omega notation is lower bond
 
 big theta, uppper bond and lower bond is same
 
-there can be priority on precious resoures, is it time to run the code, is it time to write the code or space required for the code. 
+there can be priority on precious resoures, is it time to run the code, is it time to write the code or space required for the code.
 
-we can make out own type of data type in C. 
+we can make out own type of data type in C.
 
 `typedef struct`
 typedef : its a data type
@@ -199,6 +201,7 @@ typedef struct
     string number;
 }
 ```
+
 this encapsulates the names and numbers of people in one structure.
 
 for selection sort the bigo(n^2) and the lower bond is omega(n^2) therefore we can call it theta(n^2) since we have to do all the steps even if the starting array is sorted.
@@ -215,22 +218,22 @@ void recrusion(int n)
 }
 ```
 
-### Mergesort 
+### Mergesort
 
 it used more memory, but the total time is bigO(nlogn), worst case is theta(nlogn)
 
 # lecture 4 | memory
 
-3 bytes for RGB values. 
+3 bytes for RGB values.
 
 hexadecimal can be used to represent, 4 bits = 16 values can be represented by 1 hex = 16 values. (0-15)
 
 FFFFFF --> whilte
 FF0000 --> red
 00FF00 --> green
-0000FF --> blue 
+0000FF --> blue
 
-people tend to count memory bits as hexadecimal because it makes things clear 
+people tend to count memory bits as hexadecimal because it makes things clear
 
 0x... is used to denote its in hexadecimal notation
 
@@ -246,10 +249,41 @@ we have to tell c we have to store adress of something so we need special vaiabl
 
 for printing we need `printf("%p",&n)`
 
-* can also be used as a derefernce variable, if we know what address we have, to know what is in that address. we can use `*p`
+- can also be used as a derefernce variable, if we know what address we have, to know what is in that address. we can use `*p`
 
-pointers too have pointers. 
+pointers too have pointers.
 
 pointers will always take 8 bytes; i.e. 64 bits.because it need to address all the memory in the pc.
 
+string in C is the pointer to the start of the first character in the array of characters.
+therefore it is actually `char *s = "HI!:`
+
+we can do pointer arethmatic `printf("%i\n" *(numbers + 1))`
+this + 1 etc takes into account that lenght of the data type. the int data type is 4 byte but when we do +1 it know we want the 2nd interger in that array.
+
+### dynamic memory allocation
+
+malloc & free
+
+malloc allocates bytes of memory to you
+malloc can fail if computer does not have enough memory. in that case it will return NULL
+
+```
+char *s = "Hi!"
+char *t = malloc(strlen(s) + 1);
+
+
+for (int i = 0; i < strlen(s) + 1; i++)
+{
+    t[i] = s[i]; 
+}
+
+free(t)
+```
+
+or we can do `strcpy(t,s)`
+here we are copying the data but in different addresses.
+
+
+so integers might be different size therefore using malloc should be with `malloc( 3 * sizeof(int))` to actully not worry of the size of different data types and accocate accoring to the needs.
 
